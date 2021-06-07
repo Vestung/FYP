@@ -7,7 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 //Import screens
 import MainHomeScreen from './screens/HomeScreen';
 import MainStrategyScreen from './screens/Strategy/StrategyListScreen';
-import MainHelpScreen from './screens/HelpListScreen';
+import MainHelpScreen from './screens/HelpList/HelpListScreen';
 import MainTrackingScreen from './screens/TrackingScreen';
 
 export default class App extends React.Component {
