@@ -35,7 +35,6 @@ export default class DetailsScreen extends React.Component{
             id: this.props.route.params.id,
             title: this.props.route.params.title,
             content: this.props.route.params.content,
-            removeStrategy: this.props.route.params.removeStrategy,
             editStrategy: this.props.route.params.editStrategy             
             })}
             title="Edit Strategy"

@@ -4,7 +4,7 @@ import EditStrategyForm from './EditStrategyForm';
 export default class EditStrategyScreen extends React.Component {
   handleSubmit = formState => {
     this.props.route.params.editStrategy(this.props.route.params.id, formState)
-    this.props.navigation.navigate('Strategy List');
+    this.props.navigation.navigate('List of Strategies');
   };
 
   render() {

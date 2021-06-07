@@ -44,6 +44,12 @@ export default class EditStrategyScreen extends React.Component {
         content: this.props.content,
     }
 
+    componentDidUpdate(prevProps, prevState) {
+      if (this.state.title !== prevState.title || this.state.content !== prevState.content) {
+        this.validateForm()
+      }
+    }
+
     getHandler = key => val => {
         this.setState({ [key]: val });
       };
@@ -54,6 +60,14 @@ export default class EditStrategyScreen extends React.Component {
     handleSubmit = () => {
         this.props.onSubmit(this.state);
       };
+
+    validateForm = () => {
+        if (+this.state.title.length >= 2 && this.state.content.length >= 2) {
+          this.setState({isFormValid: true})
+        } else {
+          this.setState({isFormValid: false})
+      }
+    }
 
     render() {
         return (
@@ -77,6 +91,7 @@ export default class EditStrategyScreen extends React.Component {
               style={styles.button}
                 title="Submit"
                 onPress={this.handleSubmit}
+                disabled={!this.state.isFormValid}
             />
             </View>
         )
