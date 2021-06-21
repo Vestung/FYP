@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     }
   });
 
-export default class EditStrategyScreen extends React.Component {
+export default class EditStrategyForm extends React.Component {
     state = {
         id: this.props.id,
         title: this.props.title,

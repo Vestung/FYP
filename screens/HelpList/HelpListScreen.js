@@ -69,6 +69,8 @@ class HelpScreen extends React.Component{
       if(jsonValue!= null){
         const parsedValue = JSON.parse(jsonValue)
         this.setState({help: parsedValue})
+      } else {
+        this.setState({help: []})
       }
     }
     catch (err){
@@ -82,6 +84,8 @@ class HelpScreen extends React.Component{
       if(jsonValue!= null){
         const parsedValue = parseInt(JSON.parse(jsonValue))
         this.setState({id: parsedValue})
+      } else {
+        this.setState({id: 0})
       }
     }
     catch (err){

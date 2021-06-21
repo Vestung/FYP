@@ -30,6 +30,7 @@ export default class DetailsScreen extends React.Component{
           <ScrollView style={styles.scrollView}>
             <Text style={styles.title}>{this.props.route.params.title}</Text>
             <Text style={styles.content}>{this.props.route.params.content}</Text>
+            <Text style={styles.content}>{this.props.route.params.id}</Text>
           </ScrollView>
           <Button style={styles.button} onPress={() => this.props.navigation.navigate('Edit Strategy', {
             id: this.props.route.params.id,

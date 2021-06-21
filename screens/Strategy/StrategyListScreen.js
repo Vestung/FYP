@@ -16,13 +16,13 @@ const styles = StyleSheet.create({
   },
 });
 
-let id = 0;
 
 class StrategyScreen extends React.Component{
   constructor(props){
     super(props)
     this.state = {
       strategies: [],
+      id: 0,
     }
   this.addStrategy = this.addStrategy.bind(this);
   this.removeStrategy = this.removeStrategy.bind(this);
@@ -56,7 +56,7 @@ class StrategyScreen extends React.Component{
 
   saveID = () =>{
     try {
-      const jsonID = JSON.stringify(id)
+      const jsonID = JSON.stringify(this.state.id)
       AsyncStorage.setItem('@stratID',jsonID)
     }
     catch (err){
@@ -70,6 +70,8 @@ class StrategyScreen extends React.Component{
       if(jsonValue!= null){
         const parsedValue = JSON.parse(jsonValue)
         this.setState({strategies: parsedValue})
+      }else{
+        this.setState({strategies: []})
       }
     }
     catch (err){
@@ -82,7 +84,9 @@ class StrategyScreen extends React.Component{
       const jsonValue = await AsyncStorage.getItem('@stratID');
       if(jsonValue!= null){
         const parsedValue = parseInt(JSON.parse(jsonValue))
-        id = parsedValue;
+        this.setState({id: parsedValue})
+      }else{
+        this.setState({id: 0})
       }
     }
     catch (err){
@@ -100,9 +104,9 @@ class StrategyScreen extends React.Component{
   };
 
   addStrategy = newStrategy => {
-    id++
+    this.state.id++
     this.setState(prevState => ({
-      strategies: [...prevState.strategies, {id: id,title: newStrategy.title,content: newStrategy.content}]
+      strategies: [...prevState.strategies, {id: this.state.id,title: newStrategy.title,content: newStrategy.content}]
     }));
   };
 
@@ -116,7 +120,7 @@ class StrategyScreen extends React.Component{
     })
   };
 
-  removeStrategy = id =>{
+  removeStrategy = id => {
     this.setState( prevState => ({
       strategies: prevState.strategies.filter(strategy => strategy.id !== id)
     }))
